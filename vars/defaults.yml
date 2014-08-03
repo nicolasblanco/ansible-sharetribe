@@ -1,0 +1,15 @@
+## webapp
+
+webserver_name: www.recyclagebtob.fr
+deploy_directory: /data/sharetribe
+app_name: sharetribe
+db_name: sharetribe_prod
+db_username: sharetribe
+db_password: ilikeprod
+
+## stolen from https://github.com/jgrowl/ansible-playbook-ruby-from-src
+rubyTmpDir: /usr/local/src
+rubyUrl: http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
+rubyCompressedFile: ruby-2.1.2.tar.gz
+rubyName: ruby-2.1.2
+tmpRubyPath: "{{rubyTmpDir}}/{{rubyName}}"

@@ -1,0 +1,6 @@
+- include: ruby.yml tags=ruby
+- include: deploy.yml tags=deploy
+- include: puma.yml tags=puma
+- include: nginx.yml tags=nginx
+- include: import_data.yml tags=import_data
+- include: ufw_rules.yml tags=ufw

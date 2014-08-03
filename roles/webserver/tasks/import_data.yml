@@ -1,0 +1,8 @@
+- git: repo=git://github.com/nicolasblanco/sharetribe.git
+       dest=/home/deploy/sharetribe
+       version=puma
+
+- mysql_db: name={{ db_name }}
+            login_user={{ db_username }}
+            login_password={{ db_password }}
+            state=import target=/home/deploy/sharetribe/db/structure.sql

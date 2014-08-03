@@ -1,0 +1,3 @@
+- ufw: rule=allow name=OpenSSH
+- ufw: rule=allow name='Nginx Full'
+- ufw: state=enabled policy=deny direction=incoming

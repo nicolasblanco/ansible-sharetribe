@@ -1,0 +1,13 @@
+---
+- hosts: all
+  user: root
+  vars_files:
+    - vars/defaults.yml
+
+  roles:
+    - webserver
+    - {role: database, mysql_db: [{name: "{{ db_name }}"}], mysql_users: [{name: "{{ db_username }}", pass: "{{ db_password }}", priv: "*.*:ALL"}]}
+
+  handlers:
+    - name: Restart puma
+      action: service name=puma state=restarted
