@@ -27,7 +27,6 @@
 - name: Install app dependencies
   action: apt pkg={{item}} state=installed
   with_items:
-    - python-mysqldb
     - libmysqlclient-dev
     - nodejs
     - imagemagick

@@ -1,11 +1,11 @@
-# A small Rails server playbook for Ansible
+# My Ansible scripts to deploy Sharetribe
 
 **Bastardised from https://github.com/dodecaphonic/ansible-rails-app**
 
 It installs:
 
 - Ruby 2.1
-- PostgreSQL
+- MySQL
 - nginx
 - Puma (jungle)
 
@@ -14,9 +14,6 @@ It installs:
 
 To run:
 
-    $ ansible-playbook -i hosts ruby-webapp.yml -t ruby,deploy,postgresql,nginx
-    $ <deploy your app>
+    $ ansible-playbook -i hosts ruby-webapp.yml -t ruby,deploy,mysql,nginx,ufw,import_data
+    $ <deploy your app> (BRANCH=puma HOST=XXX.XX.XX.XX bin/cap production deploy --trace)
     $ ansible-playbook -i hosts ruby-webapp.yml -t puma
-
-There is an example Capistrano `deploy.rb` in this repository that you can use too.
-
