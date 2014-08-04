@@ -5,3 +5,4 @@
 - include: nginx.yml tags=nginx
 - include: import_data.yml tags=import_data
 - include: ufw_rules.yml tags=ufw
+- include: swap.yml tags=swap
