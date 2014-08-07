@@ -14,6 +14,6 @@ It installs:
 
 To run:
 
-    $ ansible-playbook -i hosts ruby-webapp.yml -t ruby,deploy,mysql,nginx,ufw,import_data
+    $ ansible-playbook -i hosts ruby-webapp.yml -t swap,ruby,deploy,mysql,nginx,ufw,import_data
     $ <deploy your app> (BRANCH=puma HOST=XXX.XX.XX.XX bin/cap production deploy --trace)
     $ ansible-playbook -i hosts ruby-webapp.yml -t puma
