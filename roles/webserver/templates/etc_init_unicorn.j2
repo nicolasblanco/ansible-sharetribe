@@ -17,8 +17,8 @@
 
 description "Unicorn Background Worker"
 
-# no "start on", we don't want to automatically start
-stop on (stopping unicorn-manager or runlevel [06])
+start on runlevel [2345]
+stop on runlevel [06]
 
 # change apps to match your deployment user if you want to use this as a less privileged user (recommended!)
 setuid deploy

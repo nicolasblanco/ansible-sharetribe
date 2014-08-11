@@ -1,11 +1,8 @@
-- name: Add unicorn-manager
-  template: src=unicorn-manager.j2 dest=/etc/init/unicorn-manager.conf force=yes mode=755
-
 - name: Add unicorn init script
   template: src=etc_init_unicorn.j2 dest=/etc/init/unicorn.conf force=yes mode=755
 
 - name: Make shared/tmp/sockets
   file: path={{deploy_directory}}/shared/tmp/sockets group=deploy owner=deploy state=directory
 
-- name: Restart unicorn-manager
-  service: name=unicorn-manager state=restarted
+- name: Restart unicorn
+  service: name=unicorn state=restarted
