@@ -9,7 +9,7 @@
   when: ansible_swaptotal_mb < 1
 
 - name: Add to fstab
-  action: lineinfile dest=/etc/fstab regexp="swapfile" line="/swapfile none swap sw 0 0" state=present
+  lineinfile: dest=/etc/fstab regexp="swapfile" line="/swapfile none swap sw 0 0" state=present
 
 - name: Turn swap on
   command: swapon -a

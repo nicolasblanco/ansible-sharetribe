@@ -3,18 +3,18 @@
   register: mysql_root_passwd
 
 - name: register mysql root pass
-  action: shell echo mysql-server mysql-server/root_password password {{ mysql_root_passwd.stdout }} | sudo /usr/bin/debconf-set-selections
+  shell: echo mysql-server mysql-server/root_password password {{ mysql_root_passwd.stdout }} | sudo /usr/bin/debconf-set-selections
 
 - name: register mysql root pass confirm
-  action: shell echo mysql-server mysql-server/root_password_again password {{ mysql_root_passwd.stdout }} | sudo /usr/bin/debconf-set-selections
+  shell: echo mysql-server mysql-server/root_password_again password {{ mysql_root_passwd.stdout }} | sudo /usr/bin/debconf-set-selections
 
 - name: MySQL | Install server
-  action: apt pkg={{ item }} state=latest
+  apt: pkg={{ item }} state=latest
   with_items:
     - mysql-server
 
 - name: MySQL | Install client and libs
-  action: apt pkg={{ item }} state=installed
+  apt: pkg={{ item }} state=installed
   with_items:
     - mysql-client
     - python-mysqldb

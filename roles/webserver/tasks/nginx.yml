@@ -17,4 +17,4 @@
   command: ln -s /etc/nginx/sites-available/sharetribe /etc/nginx/sites-enabled/sharetribe
 
 - name: Restart nginx
-  action: service name=nginx state=restarted
+  service: name=nginx state=restarted

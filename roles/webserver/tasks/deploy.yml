@@ -1,5 +1,17 @@
+- name: Install unattended-upgrades
+  apt: pkg=unattended-upgrades state=present
+
+- name: Adjust APT update intervals
+  copy: src=config/apt_periodic dest=/etc/apt/apt.conf.d/10periodic
+
+- name: Make sure unattended-upgrades only installs from $ubuntu_release-security
+  lineinfile: dest=/etc/apt/apt.conf.d/50unattended-upgrades regexp="$ubuntu_release-updates" state=absent
+
 - name: Create deployment user
   user: name=deploy comment="Application deployment user"
+
+- name: Install fail2ban
+  apt: pkg=fail2ban state=installed
 
 - authorized_key: user=deploy key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
@@ -23,3 +35,12 @@
 
 - name: Install database.yml
   template: src=database.yml.j2 dest={{deploy_directory}}/shared/config/database.yml force=yes mode=755 owner=deploy
+
+- name: Install config.yml
+  template: src=config.yml.j2 dest={{deploy_directory}}/shared/config/config.yml force=yes mode=755 owner=deploy
+
+- name: Make shared/config/unicorn
+  file: path={{deploy_directory}}/shared/config/unicorn group=deploy owner=deploy state=directory
+
+- name: Install production.rb
+  template: src=unicorn_production.rb.j2 dest={{deploy_directory}}/shared/config/unicorn/production.rb force=yes mode=755 owner=deploy

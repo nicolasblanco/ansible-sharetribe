@@ -1,0 +1,36 @@
+# /etc/init/unicorn.conf - Unicorn config
+
+# This example config should work with Ubuntu 12.04+.  It
+# allows you to manage multiple Unicorn instances with
+# Upstart, Ubuntu's native service management tool.
+#
+# See workers.conf for how to manage all Unicorn instances at once.
+#
+# Save this config as /etc/init/unicorn.conf then manage unicorn with:
+#   sudo start unicorn
+#   sudo stop unicorn
+#   sudo status unicorn
+#
+# or use the service command:
+#   sudo service unicorn {start,stop,restart,status}
+#
+
+description "Unicorn Background Worker"
+
+# no "start on", we don't want to automatically start
+stop on (stopping unicorn-manager or runlevel [06])
+
+# change apps to match your deployment user if you want to use this as a less privileged user (recommended!)
+setuid deploy
+setgid deploy
+
+respawn
+respawn limit 3 30
+
+instance {{deploy_directory}}/current
+
+script
+cd {{deploy_directory}}/current
+logger -t unicorn "Starting server: $app"
+exec bundle exec unicorn -E production -c {{deploy_directory}}/current/config/unicorn.rb
+end script
