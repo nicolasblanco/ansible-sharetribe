@@ -5,7 +5,7 @@ set :branch, ENV['BRANCH'] || current_branch || "master" # you can use the 'bran
 
 set :deploy_to, '/data/sharetribe'
 set :log_level, :info
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/config.yml}
 set :linked_dirs, %w{tmp/sockets log config/unicorn public/sharetribe}
 set :sockets_path, Pathname.new("#{fetch(:deploy_to)}/shared/tmp/sockets/")
 
