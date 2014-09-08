@@ -7,9 +7,14 @@ db_name: mysite_prod
 db_username: mysite
 db_password: mypassword
 
-## stolen from https://github.com/jgrowl/ansible-playbook-ruby-from-src
-rubyTmpDir: /usr/local/src
-rubyUrl: http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
-rubyCompressedFile: ruby-2.1.2.tar.gz
-rubyName: ruby-2.1.2
-tmpRubyPath: "{{rubyTmpDir}}/{{rubyName}}"
+sharetribe_domain: sharetribe.sample.com
+
+default_locale: fr
+smtp_email_address: smtp.mandrillapp.com
+smtp_email_port: 587
+smtp_email_user_name: user_name
+smtp_email_password: email_password
+smtp_email_domain: sample.com
+
+sharetribe_mail_from_address: "contact@sample.com"
+feedback_mailer_recipients: "contact@sample.com"

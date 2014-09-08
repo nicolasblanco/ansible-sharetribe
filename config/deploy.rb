@@ -25,6 +25,17 @@ namespace :deploy do
     #invoke 'puma:restart'
   end
 end
+
+namespace :sphinx do
+  desc "Index Sphinx"
+  task :index do
+    on roles(:app) do
+      within release_path do
+        execute :bundle, "exec ts:index"
+      end
+    end
+  end
+end
 #
 # namespace :puma do
 #   desc "Restart puma instance for this application"

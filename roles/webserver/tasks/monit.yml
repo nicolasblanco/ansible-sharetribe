@@ -1,0 +1,12 @@
+- name: Install monit
+  apt: pkg={{item}} state=latest
+  with_items:
+    - monit
+
+- name: Sphinx monit template
+  template: src=etc_monit_conf.d_sharetribe-sphinx.j2 dest=/etc/monit/conf.d/sharetribe-sphinx group=root owner=root force=yes
+
+- name: Jobs monit template
+  template: src=etc_monit_conf.d_sharetribe-jobs.j2 dest=/etc/monit/conf.d/sharetribe-jobs group=root owner=root force=yes
+
+- service: name=monit state=restarted

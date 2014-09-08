@@ -2,6 +2,11 @@
 
 - mysql_db: name={{ db_name }} encoding=utf8 login_user={{ db_username }} login_password={{ db_password }} state=present
 
+- name: sshkeys | add keyscan
+  shell: >
+    ssh-keyscan github.com >> /etc/ssh/ssh_known_hosts;
+    ssh-keyscan bitbucket.org >> /etc/ssh/ssh_known_hosts
+
 - git: repo=git://github.com/sharetribe/sharetribe.git
        dest=/root/sharetribe
 

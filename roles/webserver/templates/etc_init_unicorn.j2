@@ -32,5 +32,5 @@ instance {{deploy_directory}}/current
 script
 cd {{deploy_directory}}/current
 logger -t unicorn "Starting server: $app"
-exec bundle exec unicorn -E production -c {{deploy_directory}}/current/config/unicorn.rb
+exec bundle exec unicorn -E production -c {{deploy_directory}}/current/config/unicorn/production.rb
 end script

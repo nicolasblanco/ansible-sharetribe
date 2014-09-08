@@ -5,4 +5,5 @@
 - include: nginx.yml tags=nginx
 - include: ufw_rules.yml tags=ufw
 - include: import_data.yml tags=import_data
+- include: monit.yml tags=monit
 - include: unicorn.yml tags=unicorn

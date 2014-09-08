@@ -1,0 +1,3 @@
+check process sharetribe-sphinx with pidfile {{deploy_directory}}/shared/log/production.sphinx.pid
+        start program = "/bin/su - deploy -c 'cd {{deploy_directory}}/current && RAILS_ENV=production bundle exec rake ts:start'"
+        stop program = "/bin/su - deploy -c 'cd {{deploy_directory}}/current && RAILS_ENV=production bundle exec rake ts:stop'"
